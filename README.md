@@ -1,16 +1,42 @@
-# dijkstrajs.js
+# dijkstra-heapq
 
-dijkstrajs is a simple JavaScript implementation of Dijkstra's single-source shortest-paths algorithm.
+TypeScript implementation of Dijkstra's single-source shortest-paths algorithm, including performance optimizations based on the [heapq](https://docs.python.org/3/library/heapq.html) Python library.
 
-The code was originally written by Wyatt Baldwin and turned into a node module by Thomas Cort.
+The code was originally written by Wyatt Baldwin and turned into a Node.js module by Thomas Cort. Ported to TypeScript by [Samuel Plumppu](https://samuelplumppu.se).
 
-## Requirements
+## Features
 
-* [nodejs](http://nodejs.org/)
+- **Works with any JS runtime** since no platform-specific APIs are used.
+- Tiny code footprint, making this suitable to include in web apps where the bundle size is important.
 
-## Installation
+## Get started
 
-    npm install dijkstrajs
+```sh
+pnpm install dijkstra-heapq
+```
+
+```ts
+import { findPath } from "dijkstra-heapq";
+
+const graph = {
+  a: { b: 10, c: 100, d: 1 },
+  b: { c: 10 },
+  d: { b: 1, e: 1 },
+  e: { f: 1 },
+  f: { c: 1 },
+  g: { b: 1 },
+};
+
+// TODO: use comments to indicate return values instead of expect()
+
+// Find the shortest path from 'a' to 'c'
+let path = findPath(graph, "a", "c");
+expect(path).toStrictEqual(["a", "d", "e", "f", "c"]);
+
+// Find the shortest path from 'd' to 'b'
+path = findPath(graph, "d", "b");
+expect(path).toStrictEqual(["d", "b"]);
+```
 
 ## Examples
 
