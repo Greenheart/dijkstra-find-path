@@ -35,6 +35,7 @@
     "lint": "oxfmt --check && oxlint"
   },
   "devDependencies": {
+    "@arethetypeswrong/core": "^0.18.2",
     "oxfmt": "^0.36.0",
     "oxlint": "^1.51.0",
     "oxlint-tsgolint": "^0.16.0",
@@ -44,7 +45,8 @@
   },
   "pnpm": {
     "overrides": {
-      "vite": "8.0.0-beta.16"
+      "vite": "8.0.0-beta.16",
+      "typescript": "6.0.1-rc"
     },
     "onlyBuiltDependencies": [
       "esbuild"
