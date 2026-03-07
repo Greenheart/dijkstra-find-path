@@ -33,5 +33,13 @@
     "oxlint-tsgolint": "^0.16.0",
     "tsdown": "^0.21.0",
     "vitest": "^4.0.18"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite": "8.0.0-beta.16"
+    },
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }
