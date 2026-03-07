@@ -1,5 +1,5 @@
 {
-  "name": "dijkstrats",
+  "name": "dijkstra-find-path",
   "version": "1.0.3",
   "description": "TypeScript implementation of Dijkstra's single-source shortest-paths algorithm, including performance optimizations based on the `heapq` Python library.",
   "keywords": [
@@ -10,14 +10,14 @@
     "search",
     "shortest"
   ],
-  "homepage": "https://github.com/Greenheart/dijkstrats",
+  "homepage": "https://github.com/Greenheart/dijkstra-find-path",
   "bugs": {
-    "url": "https://github.com/Greenheart/dijkstrats/issues"
+    "url": "https://github.com/Greenheart/dijkstra-find-path/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Greenheart/dijkstrats.git"
+    "url": "git+https://github.com/Greenheart/dijkstra-find-path.git"
   },
   "files": [
     "dist"

@@ -7,7 +7,7 @@ import * as dijkstraTS from '../dist/dijkstra.mjs'
 import BIG_GRAPH from './big-graph.json' with { type: 'json' }
 
 const baseVersion = `dijkstrajs@1.0.3 (JS)`
-const newVersion = `dijkstrats@${pkg.version} (TS)`
+const newVersion = `${pkg.name}@${pkg.version} (TS)`
 
 const time = 2000
 const iterations = 64

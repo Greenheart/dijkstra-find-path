@@ -1,4 +1,4 @@
-# Changelog for `dijkstrats`
+# Changelog for `dijkstra-find-path`
 
 ## Unreleased
 
