@@ -19,7 +19,7 @@
     "type": "git",
     "url": "git+https://github.com/Greenheart/dijkstra-heapq.git"
   },
-  "main": "dijkstra.js",
+  "type": "module",
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
@@ -41,5 +41,9 @@
     "onlyBuiltDependencies": [
       "esbuild"
     ]
+  },
+  "exports": {
+    ".": "./dist/dijkstra.mjs",
+    "./package.json": "./package.json"
   }
 }
