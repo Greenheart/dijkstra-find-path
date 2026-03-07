@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-Significant performance improvements compared to `dijkstrajs@1.0.3` by using a min-heap when traversing the graph.
+Significant performance improvements compared to `dijkstrajs@1.0.3` by using a min-heap when traversing the graph. This is especially noticeable for large graphs.
 
 This version is based on code and tests ported from the Python libraries Dijkstar and `heapq`, taking advantage of better algorithms and data structures.
 
@@ -22,6 +22,7 @@ Tested against the original test suite to match the behavior of `dijkstrajs@1.0.
 - feat: Modernize the test suite of `dijkstrajs@1.0.3` and use it to verify backwards compatibility.
 - feat: Extended test suite to cover new performance optimizations.
 - chore: Update license file to use standard MIT license format.
+- fix: Remove Unnecessary files from the published npm package.
 
 ---
 
