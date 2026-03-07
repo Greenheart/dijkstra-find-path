@@ -11,8 +11,8 @@
  *
  * License: MIT
  *
- * Copyright (c) 2008 Wyatt Baldwin
- * Copyright (c) 2014 - 2023 Thomas Cort
+ * Copyright (c) 2008-2021 Wyatt Baldwin
+ * Copyright (c) 2014-2023 Thomas Cort
  * Copyright (c) 2026 Samuel Plumppu
  *
  * This library includes derived code from the `heapq` library, ported from Python 3.14.3
