@@ -1,4 +1,4 @@
-# dijkstra-heapq
+# dijkstrats
 
 TypeScript implementation of Dijkstra's single-source shortest-paths algorithm, including performance optimizations based on the [heapq](https://docs.python.org/3/library/heapq.html) Python library.
 
@@ -12,11 +12,11 @@ The code was originally written by Wyatt Baldwin and turned into a Node.js modul
 ## Get started
 
 ```sh
-pnpm install dijkstra-heapq
+pnpm install dijkstrats
 ```
 
 ```ts
-import { findPath } from 'dijkstra-heapq'
+import { findPath } from 'dijkstrats'
 
 const graph = {
   a: { b: 10, c: 100, d: 1 },
