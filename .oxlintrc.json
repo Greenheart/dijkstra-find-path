@@ -26,5 +26,5 @@
     "builtin": true
   },
   "globals": {},
-  "ignorePatterns": ["original"]
+  "ignorePatterns": ["original/dijkstra.js"]
 }
