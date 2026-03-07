@@ -12,6 +12,7 @@
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
     "noImplicitOverride": true,
+    "allowImportingTsExtensions": true,
     "module": "preserve",
     "noEmit": true,
     "types": ["vitest/importMeta"],

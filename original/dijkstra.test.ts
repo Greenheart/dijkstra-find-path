@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import dijkstra from './dijkstra.js'
+import dijkstra from './dijkstra.cjs'
 
 const find_path = dijkstra.find_path.bind(dijkstra)
 

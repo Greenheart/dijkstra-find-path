@@ -33,7 +33,7 @@
     "test": "vitest",
     "format": "oxfmt",
     "lint": "oxfmt --check && oxlint",
-    "bench": "node --expose-gc benchmarks/bench.ts"
+    "bench": "pnpm build && node --expose-gc benchmarks/bench.ts"
   },
   "devDependencies": {
     "@arethetypeswrong/core": "^0.18.2",

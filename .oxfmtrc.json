@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "ignorePatterns": ["original/dijkstra.js"],
+  "ignorePatterns": ["original/dijkstra.cjs"],
   "singleQuote": true,
   "semi": false
 }
