@@ -2,6 +2,23 @@
   "name": "dijkstra-heapq",
   "version": "1.0.3",
   "description": "TypeScript implementation of Dijkstra's single-source shortest-paths algorithm, including performance optimizations based on the `heapq` Python library.",
+  "keywords": [
+    "dijkstra",
+    "graph",
+    "path",
+    "pathfinding",
+    "search",
+    "shortest"
+  ],
+  "homepage": "https://github.com/Greenheart/dijkstra-heapq",
+  "bugs": {
+    "url": "https://github.com/Greenheart/dijkstra-heapq/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Greenheart/dijkstra-heapq.git"
+  },
   "main": "dijkstra.js",
   "scripts": {
     "build": "tsdown",
@@ -10,23 +27,6 @@
     "format": "oxfmt",
     "lint": "oxfmt --check && oxlint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Greenheart/dijkstra-heapq.git"
-  },
-  "keywords": [
-    "dijkstra",
-    "shortest",
-    "path",
-    "search",
-    "graph",
-    "pathfinding"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Greenheart/dijkstra-heapq/issues"
-  },
-  "homepage": "https://github.com/Greenheart/dijkstra-heapq",
   "devDependencies": {
     "oxfmt": "^0.36.0",
     "oxlint": "^1.51.0",

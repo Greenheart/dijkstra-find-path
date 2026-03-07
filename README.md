@@ -16,7 +16,7 @@ pnpm install dijkstra-heapq
 ```
 
 ```ts
-import { findPath } from "dijkstra-heapq";
+import { findPath } from 'dijkstra-heapq'
 
 const graph = {
   a: { b: 10, c: 100, d: 1 },
@@ -25,20 +25,17 @@ const graph = {
   e: { f: 1 },
   f: { c: 1 },
   g: { b: 1 },
-};
-
-// TODO: use comments to indicate return values instead of expect()
+}
 
 // Find the shortest path from 'a' to 'c'
-let path = findPath(graph, "a", "c");
-expect(path).toStrictEqual(["a", "d", "e", "f", "c"]);
+let path = findPath(graph, 'a', 'c')
+// ['a', 'd', 'e', 'f', 'c']
 
 // Find the shortest path from 'd' to 'b'
-path = findPath(graph, "d", "b");
-expect(path).toStrictEqual(["d", "b"]);
+path = findPath(graph, 'd', 'b')
+// ['d', 'b']
 ```
 
 ## Examples
 
 See `test/dijkstra.test.js` in the sources for some example code.
-
