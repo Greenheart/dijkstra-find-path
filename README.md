@@ -36,6 +36,13 @@ path = findPath(graph, 'd', 'b')
 // ['d', 'b']
 ```
 
-## Examples
+## More examples
 
-See `test/dijkstra.test.js` in the sources for some example code.
+See the tests at the bottom of [src/dijkstra.ts](./src/dijkstra.ts) to find more example code.
+
+## License
+
+MIT
+
+This library includes derived code from the [heapq](https://docs.python.org/3/library/heapq.html) library, ported from Python 3.14.3
+Original license for `heapq`: PSF-2.0
