@@ -1,6 +1,9 @@
-import { defineConfig } from "tsdown";
+import { defineConfig } from 'tsdown'
 
 export default defineConfig({
   exports: true,
-  // ...config options
-});
+  define: {
+    // Remove inline tests when building the library
+    'import.meta.vitest': 'undefined',
+  },
+})
