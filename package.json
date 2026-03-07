@@ -1,12 +1,9 @@
 {
-  "name": "dijkstrajs",
+  "name": "dijkstra-heapq",
   "version": "1.0.3",
-  "description": "A simple JavaScript implementation of Dijkstra's single-source shortest-paths algorithm.",
+  "description": "TypeScript implementation of Dijkstra's single-source shortest-paths algorithm, including performance optimizations based on the `heapq` Python library.",
   "main": "dijkstra.js",
-  "scripts": {
-    "pretest": "jshint dijkstra.js",
-    "test": "mocha -R spec"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Greenheart/dijkstra-heapq.git"
@@ -16,45 +13,13 @@
     "shortest",
     "path",
     "search",
-    "graph"
+    "graph",
+    "pathfinding"
   ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Greenheart/dijkstra-heapq/issues"
   },
   "homepage": "https://github.com/Greenheart/dijkstra-heapq",
-  "devDependencies": {
-    "expect.js": "^0.3.1",
-    "jshint": "^2.13.6",
-    "mocha": "^10.2.0"
-  },
-  "jshintConfig": {
-    "bitwise": true,
-    "curly": true,
-    "eqeqeq": true,
-    "forin": true,
-    "freeze": true,
-    "globalstrict": true,
-    "immed": true,
-    "indent": 4,
-    "moz": true,
-    "newcap": true,
-    "noarg": true,
-    "node": true,
-    "noempty": true,
-    "nonew": true,
-    "trailing": true,
-    "undef": true,
-    "smarttabs": true,
-    "strict": true,
-    "validthis": true,
-    "globals": {
-      "describe": false,
-      "it": false,
-      "before": false,
-      "beforeEach": false,
-      "after": false,
-      "afterEach": false
-    }
-  }
+  "devDependencies": {}
 }
