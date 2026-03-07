@@ -19,6 +19,9 @@
     "type": "git",
     "url": "git+https://github.com/Greenheart/dijkstra-heapq.git"
   },
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "exports": {
     ".": "./dist/dijkstra.mjs",
