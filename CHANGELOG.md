@@ -8,10 +8,10 @@ This version is based on code and tests ported from the Python libraries Dijksta
 
 Tested against the original test suite to match the behavior of `dijkstrajs@1.0.3`. Apart from a small naming change in the public API (see below), this is fully backwards compatible and maintains the same behavior.
 
-### Breaking changes
+### Breaking changes compared to `dijkstrajs@1.0.3`
 
-- feat!: Simplify public API and hide internal implementation details:
-  - `find_path` has been renamed to `findPath` but is otherwise fully backwards compatible.
+- feat!: Simplify public API and avoid leaking internal implementation details:
+  - `find_path()` has been renamed to `findPath()` but is otherwise fully backwards compatible.
   - All other methods and properties are now internal only to keep the public API simple.
 
 ### Other changes

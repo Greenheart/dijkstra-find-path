@@ -1,13 +1,17 @@
 # dijkstrats
 
-TypeScript implementation of Dijkstra's single-source shortest-paths algorithm, including performance optimizations based on the [heapq](https://docs.python.org/3/library/heapq.html) Python library.
+TypeScript implementation of Dijkstra's single-source shortest-paths algorithm, with performance optimizations based on the [heapq](https://docs.python.org/3/library/heapq.html) Python library.
 
 The code was originally written by Wyatt Baldwin and turned into a Node.js module by Thomas Cort. Ported to TypeScript by [Samuel Plumppu](https://samuelplumppu.se).
 
 ## Features
 
-- **Works with any JS runtime** since no platform-specific APIs are used.
-- Tiny code footprint, making this suitable to include in web apps where the bundle size is important.
+- **Works with any JS runtime**: Pure JS implementation without any platform-specific APIs.
+- **Tiny code footprint**: Only `0.54 kB` minified + gzipped, making this suitable to include in web apps where the bundle size is important.
+- **Improved performance**: Using a min-heap which especially improves the performance of larger graphs. See benchmark below.
+- **TypeScript** definitions included.
+- Easy to upgrade from `dijkstrajs@1.0.3` thanks to the backwards-compatible API and implementation. Just rename one function and you're good to go. See the [CHANGELOG](./CHANGELOG.md) for a detailed upgrade guide.
+- Comprehensive test suite, including the original tests from `dijkstrajs`, extended with new tests to verify the performance improvements.
 
 ## Get started
 
@@ -57,7 +61,7 @@ Run benchmarks with `pnpm bench`.
 
 Based on the sample graph in the benchmark, this library runs `9%` faster compared to the unoptimized version. This might not seem like much for a small graph, but for larger amounts of data, this adds up.
 
-This is not a perfect benchmark, but rather a starting point to make sure this library performs well. You're welcome to contribute to the project you find ways to further improve the library and benchmarks!
+This is not a perfect benchmark, and I haven't included all large graphs I tested to keep the repo clean. However, this is a starting point to make sure this library performs well, and help catch performance regressions in the future. You're welcome to contribute to the project you find ways to further improve the library and benchmarks!
 
 ## License
 
