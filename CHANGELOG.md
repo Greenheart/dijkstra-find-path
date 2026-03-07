@@ -21,6 +21,7 @@ Tested against the original test suite to match the behavior of `dijkstrajs@1.0.
 - feat: Use modern ES features to simplify the code.
 - feat: Modernize the test suite of `dijkstrajs@1.0.3` and use it to verify backwards compatibility.
 - feat: Extended test suite to cover new performance optimizations.
+- feat: Add benchmarks to verify performance improvements.
 - chore: Update license file to use standard MIT license format.
 - fix: Remove Unnecessary files from the published npm package.
 
