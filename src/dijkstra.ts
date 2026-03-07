@@ -104,8 +104,7 @@ function singleSourceShortestPath(graph: Graph, s: Node, d?: Node) {
   // this queue are candidates for visitation. Nodes are added to this
   // queue when they are reached (but only if they have not already
   // been visited).
-  const visit_queue = new PriorityQueue<QueueItem>((a, b) => a.cost - b.cost)
-  visit_queue.push({ value: s, cost: 0 })
+  const visit_queue: QueueItem[] = [{ value: s, cost: 0 }]
 
   // Nodes that have been visited. Once a node has been visited, it
   // won't be visited again. Note that in this context "visited" means
@@ -113,11 +112,11 @@ function singleSourceShortestPath(graph: Graph, s: Node, d?: Node) {
   // must have been "reached" to be selected).
   const visited = new Set<Node>()
 
-  while (visit_queue.length) {
+  while (visit_queue.length > 0) {
     // In the nodes remaining in the graph that have a known cost
     // from `s`, find the node, `u`, that currently has the shortest path
     // from `s`.
-    const { value: u, cost: cost_of_s_to_u } = visit_queue.pop()
+    const { value: u, cost: cost_of_s_to_u } = heappop(visit_queue)
 
     if (u === d) {
       // Abort as soon as we have found the destination
@@ -166,7 +165,7 @@ function singleSourceShortestPath(graph: Graph, s: Node, d?: Node) {
         // is considered to be infinity.
         costs[v] = cost_of_s_to_u_plus_cost_of_e
         predecessors[v] = u
-        visit_queue.push({ value: v, cost: cost_of_s_to_u_plus_cost_of_e })
+        heappush(visit_queue, { value: v, cost: cost_of_s_to_u_plus_cost_of_e })
       }
     }
   }
@@ -197,95 +196,86 @@ function extractShortestPathFromPredecessors(predecessors: Predecessors, d: Node
 
 type CompareFn<T> = (a: T, b: T) => number
 
+const compare: CompareFn<QueueItem> = (a, b) => a.cost - b.cost
+
 /**
- * Optimized priority queue based on the `heapq` library, ported from Python.
+ * The following methods are used to implement an optimized priority queue,
+ * based on a min-heap.
  *
- * This version only includes the code required to implement a min-heap.
+ * The code below is ported from the `heapq` Python library and
+ * only includes the code required to implement a min-heap.
  *
  * Learn more: https://docs.python.org/3/library/heapq.html
  */
-class PriorityQueue<T> {
-  #heap: T[]
-  #compare: CompareFn<T>
 
-  constructor(compare: CompareFn<T>) {
-    this.#heap = []
-    this.#compare = compare
+/**
+ * Add a new item to the queue and ensure the highest priority element
+ * is at the front of the queue.
+ */
+function heappush(heap: QueueItem[], item: QueueItem) {
+  // Push item onto heap, maintaining the heap invariant.
+  heap.push(item)
+  _siftdown(heap, 0, heap.length - 1)
+}
+
+/**
+ * Return the highest priority element in the queue.
+ */
+function heappop(heap: QueueItem[]) {
+  // Pop the smallest item off the heap, maintaining the heap invariant.
+  const lastelt = heap.pop()
+  if (!lastelt) throw new Error('Queue is empty')
+  if (heap.length) {
+    const returnitem = heap[0]!
+    heap[0] = lastelt
+    _siftup(heap, 0)
+    return returnitem
   }
+  return lastelt
+}
 
-  /**
-   * Add a new item to the queue and ensure the highest priority element
-   * is at the front of the queue.
-   */
-  push(item: T) {
-    // Push item onto heap, maintaining the heap invariant.
-    this.#heap.push(item)
-    this.#siftdown(0, this.#heap.length - 1)
-  }
-
-  /**
-   * Return the highest priority element in the queue.
-   */
-  pop() {
-    // Pop the smallest item off the heap, maintaining the heap invariant.
-    const lastelt = this.#heap.pop()
-    if (!lastelt) throw new Error('Queue is empty')
-    if (this.#heap.length) {
-      const returnitem = this.#heap[0]!
-      this.#heap[0] = lastelt
-      this.#siftup(0)
-      return returnitem
+/**
+ * 'heap' is a heap at all indices >= startpos, except possibly for pos. pos
+ * is the index of a leaf with a possibly out-of-order value. Restore the
+ * heap invariant.
+ */
+function _siftdown(heap: QueueItem[], startpos: number, pos: number) {
+  let newitem = heap[pos]!
+  // Follow the path to the root, moving parents down until finding a place newitem fits.
+  while (pos > startpos) {
+    let parentpos = (pos - 1) >> 1
+    let parent = heap[parentpos]!
+    if (compare(newitem, parent) < 0) {
+      heap[pos] = parent
+      pos = parentpos
+      continue
     }
-    return lastelt
+    break
   }
+  heap[pos] = newitem
+}
 
-  get length() {
-    return this.#heap.length
-  }
-
-  /**
-   * 'heap' is a heap at all indices >= startpos, except possibly for pos. pos
-   * is the index of a leaf with a possibly out-of-order value. Restore the
-   * heap invariant.
-   */
-  #siftdown(startpos: number, pos: number) {
-    let newitem = this.#heap[pos]!
-    // Follow the path to the root, moving parents down until finding a place newitem fits.
-    while (pos > startpos) {
-      let parentpos = (pos - 1) >> 1
-      let parent = this.#heap[parentpos]!
-      if (this.#compare(newitem, parent) < 0) {
-        this.#heap[pos] = parent
-        pos = parentpos
-        continue
-      }
-      break
+function _siftup(heap: QueueItem[], pos: number) {
+  const endpos = heap.length
+  const startpos = pos
+  const newitem = heap[pos]!
+  // Bubble up the smaller child until hitting a leaf.
+  let childpos = 2 * pos + 1 // leftmost child position
+  while (childpos < endpos) {
+    // Set childpos to index of smaller child.
+    let rightpos = childpos + 1
+    if (rightpos < endpos && compare(heap[childpos]!, heap[rightpos]!) >= 0) {
+      childpos = rightpos
     }
-    this.#heap[pos] = newitem
+    // Move the smaller child up.
+    heap[pos] = heap[childpos]!
+    pos = childpos
+    childpos = 2 * pos + 1
   }
-
-  #siftup(pos: number) {
-    const endpos = this.#heap.length
-    const startpos = pos
-    const newitem = this.#heap[pos]!
-    // Bubble up the smaller child until hitting a leaf.
-    let childpos = 2 * pos + 1 // leftmost child position
-    while (childpos < endpos) {
-      // Set childpos to index of smaller child.
-      let rightpos = childpos + 1
-      if (rightpos < endpos && this.#compare(this.#heap[childpos]!, this.#heap[rightpos]!) >= 0) {
-        childpos = rightpos
-      }
-      // Move the smaller child up.
-      this.#heap[pos] = this.#heap[childpos]!
-      pos = childpos
-      childpos = 2 * pos + 1
-    }
-    // The leaf at pos is empty now.  Put newitem there, and bubble it up
-    // to its final resting place (by sifting its parents down).
-    this.#heap[pos] = newitem
-    this.#siftdown(startpos, pos)
-  }
+  // The leaf at pos is empty now.  Put newitem there, and bubble it up
+  // to its final resting place (by sifting its parents down).
+  heap[pos] = newitem
+  _siftdown(heap, startpos, pos)
 }
 
 if (import.meta.vitest) {
