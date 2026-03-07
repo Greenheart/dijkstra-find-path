@@ -7,6 +7,7 @@ export default defineConfig({
     'import.meta.vitest': 'undefined',
   },
   exports: true,
+  publint: true,
   dts: {
     "compilerOptions": {
       "declaration": true,
