@@ -2,7 +2,12 @@ import { defineConfig } from 'tsdown'
 
 export default defineConfig({
   exports: true,
-  dts: true,
+  dts: {
+    "compilerOptions": {
+      "declaration": true,
+      "isolatedDeclarations": true,
+    },
+  },
   attw: {
     profile: "esm-only"
   },
