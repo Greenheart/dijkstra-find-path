@@ -1,6 +1,6 @@
 # Changelog for `dijkstra-find-path`
 
-## Unreleased
+## 2.0.0 - 2026-03-07
 
 Significant performance improvements compared to `dijkstrajs@1.0.3` by using a min-heap when traversing the graph. This is especially noticeable for large graphs.
 
